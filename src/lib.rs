@@ -152,7 +152,10 @@ impl Build {
             // Nothing related to zlib please
             .arg("no-comp")
             .arg("no-zlib")
-            .arg("no-zlib-dynamic");
+            .arg("no-zlib-dynamic")
+            // Seems to produce duplicate symbol errors at this time unless this
+            // is specified?
+            .arg("no-legacy");
 
         if cfg!(not(feature = "weak-crypto")) {
             configure
