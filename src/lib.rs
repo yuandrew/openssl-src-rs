@@ -131,6 +131,7 @@ impl Build {
         cp_r(&source_dir(), &inner_dir);
         apply_patches(target, &inner_dir);
 
+        println!("OPENSSL_SRC_PERL: {:?}", env::var("OPENSSL_SRC_PERL"));
         let perl_program =
             env::var("OPENSSL_SRC_PERL").unwrap_or(env::var("PERL").unwrap_or("perl".to_string()));
         let mut configure = Command::new(perl_program);
@@ -417,6 +418,7 @@ impl Build {
         }
 
         // And finally, run the perl configure script!
+        println!("Inner dir: {:?}", inner_dir);
         configure.current_dir(&inner_dir);
         self.run_command(configure, "configuring OpenSSL build");
 
@@ -477,6 +479,12 @@ impl Build {
 
     fn run_command(&self, mut command: Command, desc: &str) {
         println!("running {:?}", command);
+        println!("desc: {:?}", desc);
+        let paths = std::fs::read_dir("./").unwrap();
+
+        for path in paths {
+            println!("Name: {}", path.unwrap().path().display())
+        }
         let status = command.status().unwrap();
         if !status.success() {
             panic!(
@@ -529,14 +537,16 @@ fn apply_patches_musl(target: &str, inner: &Path) {
 
     // Undo part of https://github.com/openssl/openssl/commit/c352bd07ed2ff872876534c950a6968d75ef121e on MUSL
     // since it doesn't have asm/unistd.h
-    let path = inner.join("crypto/rand/rand_unix.c");
-    let buf = fs::read_to_string(&path).unwrap();
+    // let path = inner.join("providers/implementations/rands/seeding/rand_unix.c");
+    // println!("ASDFASDF");
+    // println!("PATH: {:?}", path);
+    // let buf = fs::read_to_string(&path).unwrap();
 
-    let buf = buf
-        .replace("asm/unistd.h", "sys/syscall.h")
-        .replace("__NR_getrandom", "SYS_getrandom");
+    // let buf = buf
+    //     .replace("asm/unistd.h", "sys/syscall.h")
+    //     .replace("__NR_getrandom", "SYS_getrandom");
 
-    fs::write(path, buf).unwrap();
+    // fs::write(path, buf).unwrap();
 }
 
 fn sanitize_sh(path: &Path) -> String {
