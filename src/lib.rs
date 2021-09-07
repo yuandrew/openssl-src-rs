@@ -22,7 +22,7 @@ pub struct Build {
 pub struct Artifacts {
     include_dir: PathBuf,
     lib_dir: PathBuf,
-    bin_dir: PathBuf,
+    _bin_dir: PathBuf,
     libs: Vec<String>,
     target: String,
 }
@@ -470,7 +470,7 @@ impl Build {
 
         Artifacts {
             lib_dir: install_dir.join("lib"),
-            bin_dir: install_dir.join("bin"),
+            _bin_dir: install_dir.join("bin"),
             include_dir: install_dir.join("include"),
             libs: libs,
             target: target.to_string(),
@@ -530,7 +530,7 @@ fn apply_patches(target: &str, inner: &Path) {
     apply_patches_musl(target, inner);
 }
 
-fn apply_patches_musl(target: &str, inner: &Path) {
+fn apply_patches_musl(target: &str, _inner: &Path) {
     if !target.contains("musl") {
         return;
     }
