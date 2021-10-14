@@ -1,0 +1,65 @@
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+      {
+        "file": "openssl/apps/ca-key.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/client.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/demoCA/private/cakey.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/dsa-ca.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/dsa-pca.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/pca-key.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/privkey.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/rsa8192.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/s1024key.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/s512-key.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/server.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/apps/server2.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/demos/bio/server-ec.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/demos/bio/server.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      },
+      {
+        "file": "openssl/demos/certs/apps/ckey.pem",
+        "_justification": "A synthetic key file used for tests. Key is already public in the OpenSSL open source repo."
+      }
+    ]
+  }
